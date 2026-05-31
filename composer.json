@@ -1,6 +1,6 @@
 {
     "name": "kissous/uuid7",
-    "description": "Bibliothèque PHP légère et sans dépendance pour générer et manipuler des identifiants time-ordered : UUIDv7 (RFC 9562) et ULID.",
+    "description": "Lightweight, dependency-free PHP library to generate and handle time-ordered identifiers: UUIDv7 (RFC 9562) and ULID.",
     "type": "library",
     "license": "MIT",
     "keywords": ["uuid", "uuidv7", "uuid7", "ulid", "rfc9562", "identifier", "time-ordered", "guid"],
@@ -43,12 +43,12 @@
         "bench": "phpunit --testsuite=Benchmark"
     },
     "scripts-descriptions": {
-        "test": "Lance la suite de tests PHPUnit (Unit + Property)",
-        "test:coverage": "Tests avec rapport de couverture (nécessite Xdebug ou PCOV)",
-        "stan": "Analyse statique PHPStan (niveau max)",
-        "cs": "Corrige le style avec PHP-CS-Fixer",
-        "cs:check": "Vérifie le style sans modifier (dry-run)",
-        "bench": "Lance les benchmarks vs ramsey/uuid"
+        "test": "Run the PHPUnit test suite (Unit + Property)",
+        "test:coverage": "Run tests with a coverage report (requires Xdebug or PCOV)",
+        "stan": "PHPStan static analysis (max level)",
+        "cs": "Fix code style with PHP-CS-Fixer",
+        "cs:check": "Check code style without changing files (dry-run)",
+        "bench": "Run benchmarks against ramsey/uuid"
     },
     "config": {
         "sort-packages": true,

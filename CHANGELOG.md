@@ -1,22 +1,31 @@
 # Changelog
 
-Toutes les évolutions notables de ce projet sont documentées dans ce fichier.
+All notable changes to this project are documented in this file.
 
-Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/)
-et le projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+
+## [1.0.1] - 2026-05-31
+
+### Changed
+
+- Translated user-facing documentation (README, roadmap), code comments and the
+  `composer.json` description to English.
+- `InvalidUuidException` message is now in English.
 
 ## [1.0.0] - 2026-05-31
 
 ### Added
 
-- Value object immuable `Kissous\Uuid7\Uuid7` (UUIDv7, RFC 9562).
-- `Uuid7::generate()` : génération time-ordered avec aléa crypto-secure (`random_bytes`).
-- `Uuid7::fromString()` : parsing depuis la forme canonique, insensible à la casse,
-  avec validation stricte de la version (7) et du variant (RFC 9562).
-- `Uuid7::toString()` et support de `Stringable`.
-- `Kissous\Uuid7\Exception\InvalidUuidException` pour les entrées invalides.
+- Immutable value object `Kissous\Uuid7\Uuid7` (UUIDv7, RFC 9562).
+- `Uuid7::generate()`: time-ordered generation with crypto-secure randomness (`random_bytes`).
+- `Uuid7::fromString()`: parsing from the canonical form, case-insensitive, with
+  strict validation of the version (7) and variant (RFC 9562).
+- `Uuid7::toString()` and `Stringable` support.
+- `Kissous\Uuid7\Exception\InvalidUuidException` for invalid input.
 
-[Unreleased]: https://github.com/Kissous/uuid7/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/Kissous/uuid7/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/Kissous/uuid7/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Kissous/uuid7/releases/tag/v1.0.0

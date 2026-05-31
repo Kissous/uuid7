@@ -5,20 +5,20 @@
 [![PHP Version](https://img.shields.io/packagist/php-v/kissous/uuid7)](https://packagist.org/packages/kissous/uuid7)
 [![License](https://img.shields.io/packagist/l/kissous/uuid7)](LICENSE)
 
-Bibliothèque PHP légère, **sans dépendance**, pour générer et manipuler des identifiants
-time-ordered : **UUIDv7 (RFC 9562)**, avec extension **ULID** à venir.
+Lightweight, **dependency-free** PHP library to generate and handle time-ordered
+identifiers: **UUIDv7 (RFC 9562)**, with **ULID** support coming next.
 
-Conçue pour la performance d'indexation en base : les UUIDv7 sont triés par le temps,
-ce qui évite la fragmentation des index B-tree (contrairement aux UUIDv4 aléatoires).
+Built for database indexing performance: UUIDv7 values are sorted by time, which
+avoids B-tree index fragmentation (unlike random UUIDv4 values).
 
-## Pourquoi uuid7 ?
+## Why uuid7?
 
-- **Zéro dépendance** hors `php` stdlib
-- **Crypto-secure** : aléa via `random_bytes()` uniquement
-- **Time-ordered** : insertions séquentielles, index B-tree compacts
-- **API minuscule**, focalisée sur UUIDv7 (puis ULID)
-- **PHP 8.3+** : value objects `final` `readonly` immuables
-- Conforme **RFC 9562**
+- **Zero dependencies** beyond the PHP standard library
+- **Crypto-secure**: randomness from `random_bytes()` only
+- **Time-ordered**: sequential inserts, compact B-tree indexes
+- **Tiny API**, focused on UUIDv7 (then ULID)
+- **PHP 8.3+**: `final`, `readonly`, immutable value objects
+- **RFC 9562** compliant
 
 ## Installation
 
@@ -26,26 +26,26 @@ ce qui évite la fragmentation des index B-tree (contrairement aux UUIDv4 aléat
 composer require kissous/uuid7
 ```
 
-Requiert PHP **8.3** ou supérieur.
+Requires PHP **8.3** or higher.
 
 ## Quick start
 
 ```php
 use Kissous\Uuid7\Uuid7;
 
-// Générer un nouvel UUIDv7
+// Generate a new UUIDv7
 $uuid = Uuid7::generate();
-echo $uuid->toString();        // ex. 0190f3a4-7b2c-7def-8123-456789abcdef
-echo $uuid;                    // identique (Stringable)
+echo $uuid->toString();        // e.g. 0190f3a4-7b2c-7def-8123-456789abcdef
+echo $uuid;                    // same output (Stringable)
 
-// Parser une chaîne existante (insensible à la casse, normalisée en minuscules)
+// Parse an existing string (case-insensitive, normalized to lowercase)
 $parsed = Uuid7::fromString('0190F3A4-7B2C-7DEF-8123-456789ABCDEF');
 
-// Validation : lève InvalidUuidException si la chaîne n'est pas un UUIDv7 valide
+// Validation: throws InvalidUuidException if the string is not a valid UUIDv7
 use Kissous\Uuid7\Exception\InvalidUuidException;
 
 try {
-    Uuid7::fromString('pas-un-uuid');
+    Uuid7::fromString('not-a-uuid');
 } catch (InvalidUuidException $e) {
     // ...
 }
@@ -53,29 +53,29 @@ try {
 
 ## Roadmap
 
-| Version | Contenu |
-|---------|---------|
-| **v1.0** | UUIDv7 : `generate`, `fromString`, `toString`, validation |
-| v1.1 | Monotonicité dans la même milliseconde |
+| Version | Contents |
+|---------|----------|
+| **v1.0** | UUIDv7: `generate`, `fromString`, `toString`, validation |
+| v1.1 | Monotonicity within the same millisecond |
 | v1.2 | `timestamp()`, `equals()`, `compareTo()` |
 | v1.3 | `toBytes/fromBytes`, `toHex/fromHex`, `toBase32/fromBase32` |
-| v1.4 | Support ULID complet + conversion UUIDv7 ↔ ULID |
-| v1.5 | `Clock` / `RandomSource` injectables, `Uuid7Factory` |
-| v1.6 | Intégrations `kissous/uuid7-doctrine`, `kissous/uuid7-eloquent` |
+| v1.4 | Full ULID support + UUIDv7 ↔ ULID conversion |
+| v1.5 | Injectable `Clock` / `RandomSource`, `Uuid7Factory` |
+| v1.6 | Integrations: `kissous/uuid7-doctrine`, `kissous/uuid7-eloquent` |
 
-Détail par version dans [`docs/roadmap/`](docs/roadmap/).
+Per-version details in [`docs/roadmap/`](docs/roadmap/).
 
-## Développement
+## Development
 
 ```bash
 composer install
 composer test        # PHPUnit (Unit + Property)
-composer stan        # PHPStan niveau max
+composer stan        # PHPStan, max level
 composer cs:check    # PHP-CS-Fixer (dry-run)
-composer cs          # PHP-CS-Fixer (corrige)
-composer bench       # Benchmarks vs ramsey/uuid
+composer cs          # PHP-CS-Fixer (apply fixes)
+composer bench       # Benchmarks against ramsey/uuid
 ```
 
-## Licence
+## License
 
 [MIT](LICENSE) © Omar Kissous

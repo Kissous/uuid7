@@ -1,8 +1,8 @@
-# Normalisation des fins de ligne
+# Line-ending normalization
 * text=auto eol=lf
 
-# Fichiers exclus des archives de distribution (composer --prefer-dist / Packagist).
-# Allège le package : seuls src/ + LICENSE + composer.json sont nécessaires à l'install.
+# Files excluded from distribution archives (composer --prefer-dist / Packagist).
+# Keeps the package lean: only src/ + LICENSE + composer.json are needed to install.
 /.github            export-ignore
 /.idea              export-ignore
 /docs               export-ignore
