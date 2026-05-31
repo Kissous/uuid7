@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-05-31
+
+### Added
+
+- Same-millisecond monotonicity: UUIDs generated in the same process are now
+  strictly increasing, even within a single millisecond (RFC 9562 "monotonic
+  random" method). No public API change.
+
 ## [1.0.1] - 2026-05-31
 
 ### Changed
@@ -26,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - `Uuid7::toString()` and `Stringable` support.
 - `Kissous\Uuid7\Exception\InvalidUuidException` for invalid input.
 
-[Unreleased]: https://github.com/Kissous/uuid7/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/Kissous/uuid7/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/Kissous/uuid7/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/Kissous/uuid7/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Kissous/uuid7/releases/tag/v1.0.0
