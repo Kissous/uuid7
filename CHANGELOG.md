@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-05-31
+
+### Changed
+
+- Clarified in the README that same-millisecond monotonicity is guaranteed
+  within a single process.
+
+### Added
+
+- RFC 9562 conformance test against the specification's example UUIDv7 vector
+  (verifies version, variant and timestamp decoding).
+
 ## [1.1.0] - 2026-05-31
 
 ### Added
@@ -34,7 +46,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - `Uuid7::toString()` and `Stringable` support.
 - `Kissous\Uuid7\Exception\InvalidUuidException` for invalid input.
 
-[Unreleased]: https://github.com/Kissous/uuid7/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/Kissous/uuid7/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/Kissous/uuid7/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/Kissous/uuid7/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/Kissous/uuid7/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Kissous/uuid7/releases/tag/v1.0.0
