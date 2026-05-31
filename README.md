@@ -16,6 +16,7 @@ avoids B-tree index fragmentation (unlike random UUIDv4 values).
 - **Zero dependencies** beyond the PHP standard library
 - **Crypto-secure**: randomness from `random_bytes()` only
 - **Time-ordered**: sequential inserts, compact B-tree indexes
+- **Monotonic**: values generated in the same millisecond are strictly increasing
 - **Tiny API**, focused on UUIDv7 (then ULID)
 - **PHP 8.3+**: `final`, `readonly`, immutable value objects
 - **RFC 9562** compliant
