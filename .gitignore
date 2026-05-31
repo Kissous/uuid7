@@ -1,0 +1,25 @@
+# Dépendances Composer
+/vendor/
+
+# composer.lock — versionné pour une application, ignoré pour une lib
+/composer.lock
+
+# Caches outils
+/.phpunit.cache/
+/.php-cs-fixer.cache
+/.phpstan.cache/
+
+# Artefacts de build / couverture
+/build/
+/coverage/
+
+# Config locale développeur
+/phpunit.xml.dist.local
+/.php-cs-fixer.php
+
+# IDE / OS
+/.idea/
+/.vscode/
+*.iml
+.DS_Store
+Thumbs.db

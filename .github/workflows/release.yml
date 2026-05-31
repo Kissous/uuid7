@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  tests:
+    uses: ./.github/workflows/tests.yml
+
+  release:
+    name: GitHub Release
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extraire la version du tag
+        id: version
+        run: echo "number=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Extraire les notes depuis le CHANGELOG
+        id: notes
+        run: |
+          version="${{ steps.version.outputs.number }}"
+          # Bloc compris entre "## [x.y.z]" et le "##" suivant.
+          notes="$(awk -v v="$version" '
+            $0 ~ "^## \\[" v "\\]" {capture=1; next}
+            capture && /^## / {exit}
+            capture {print}
+          ' CHANGELOG.md)"
+          if [ -z "$(printf '%s' "$notes" | tr -d '[:space:]')" ]; then
+            notes="Voir le CHANGELOG.md pour les détails de la version ${version}."
+          fi
+          {
+            echo "body<<EOF"
+            printf '%s\n' "$notes"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Créer la release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          body: ${{ steps.notes.outputs.body }}
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}

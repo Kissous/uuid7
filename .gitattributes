@@ -1,0 +1,16 @@
+# Normalisation des fins de ligne
+* text=auto eol=lf
+
+# Fichiers exclus des archives de distribution (composer --prefer-dist / Packagist).
+# Allège le package : seuls src/ + LICENSE + composer.json sont nécessaires à l'install.
+/.github            export-ignore
+/.idea              export-ignore
+/docs               export-ignore
+/tests              export-ignore
+/.gitattributes     export-ignore
+/.gitignore         export-ignore
+/.php-cs-fixer.dist.php  export-ignore
+/CLAUDE.md          export-ignore
+/CHANGELOG.md       export-ignore
+/phpstan.neon       export-ignore
+/phpunit.xml        export-ignore

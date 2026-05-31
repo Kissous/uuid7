@@ -1,0 +1,60 @@
+{
+    "name": "kissous/uuid7",
+    "description": "Bibliothèque PHP légère et sans dépendance pour générer et manipuler des identifiants time-ordered : UUIDv7 (RFC 9562) et ULID.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["uuid", "uuidv7", "uuid7", "ulid", "rfc9562", "identifier", "time-ordered", "guid"],
+    "homepage": "https://github.com/Kissous/uuid7",
+    "support": {
+        "issues": "https://github.com/Kissous/uuid7/issues",
+        "source": "https://github.com/Kissous/uuid7"
+    },
+    "authors": [
+        {
+            "name": "Omar Kissous",
+            "email": "kissousomar@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0",
+        "phpstan/phpstan": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "ramsey/uuid": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kissous\\Uuid7\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kissous\\Uuid7\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --exclude-testsuite=Benchmark",
+        "test:coverage": "phpunit --exclude-testsuite=Benchmark --coverage-html build/coverage --coverage-text",
+        "stan": "phpstan analyse",
+        "cs": "php-cs-fixer fix",
+        "cs:check": "php-cs-fixer fix --dry-run --diff",
+        "bench": "phpunit --testsuite=Benchmark"
+    },
+    "scripts-descriptions": {
+        "test": "Lance la suite de tests PHPUnit (Unit + Property)",
+        "test:coverage": "Tests avec rapport de couverture (nécessite Xdebug ou PCOV)",
+        "stan": "Analyse statique PHPStan (niveau max)",
+        "cs": "Corrige le style avec PHP-CS-Fixer",
+        "cs:check": "Vérifie le style sans modifier (dry-run)",
+        "bench": "Lance les benchmarks vs ramsey/uuid"
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

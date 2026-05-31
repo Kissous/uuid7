@@ -1,0 +1,58 @@
+name: Tests
+
+# Workflow réutilisable : tests + analyse statique + style.
+# Appelé par ci.yml (push/PR) et par release.yml (gate avant publication).
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Tests (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: pcov
+          tools: composer:v2
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: PHPUnit
+        run: composer test
+
+  static-analysis:
+    name: Static analysis & style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: PHPStan
+        run: composer stan
+
+      - name: PHP-CS-Fixer (dry-run)
+        run: composer cs:check
