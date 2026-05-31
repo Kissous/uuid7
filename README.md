@@ -57,7 +57,7 @@ try {
 | Version | Contents |
 |---------|----------|
 | **v1.0** | UUIDv7: `generate`, `fromString`, `toString`, validation |
-| v1.1 | Monotonicity within the same millisecond |
+| **v1.1** | Monotonicity within the same millisecond |
 | v1.2 | `timestamp()`, `equals()`, `compareTo()` |
 | v1.3 | `toBytes/fromBytes`, `toHex/fromHex`, `toBase32/fromBase32` |
 | v1.4 | Full ULID support + UUIDv7 ↔ ULID conversion |
