@@ -10,6 +10,6 @@ final class InvalidUuidException extends InvalidArgumentException
 {
     public static function forString(string $value): self
     {
-        return new self(\sprintf('"%s" n\'est pas un UUIDv7 valide (RFC 9562).', $value));
+        return new self(\sprintf('"%s" is not a valid UUIDv7 (RFC 9562).', $value));
     }
 }

@@ -30,9 +30,9 @@ final class Uuid7Test extends TestCase
     {
         $uuid = Uuid7::generate()->toString();
 
-        // 15e caractère = version, 17e = variant (groupes séparés par '-')
-        self::assertSame('7', $uuid[14], 'le nibble de version doit valoir 7');
-        self::assertContains($uuid[19], ['8', '9', 'a', 'b'], 'variant RFC 9562 attendu');
+        // 15th char = version, 20th = variant (groups separated by '-')
+        self::assertSame('7', $uuid[14], 'the version nibble must equal 7');
+        self::assertContains($uuid[19], ['8', '9', 'a', 'b'], 'RFC 9562 variant expected');
     }
 
     #[Test]
@@ -77,12 +77,12 @@ final class Uuid7Test extends TestCase
      */
     public static function invalidStrings(): iterable
     {
-        yield 'chaine vide' => [' '];
-        yield 'trop court' => ['0190f3a4-7b2c-7def-8123'];
-        yield 'caractere non hex' => ['0190f3a4-7b2c-7def-8123-456789abcdez'];
-        yield 'mauvaise version' => ['0190f3a4-7b2c-4def-8123-456789abcdef'];
-        yield 'mauvais variant' => ['0190f3a4-7b2c-7def-c123-456789abcdef'];
-        yield 'sans tirets' => ['0190f3a47b2c7def8123456789abcdef'];
+        yield 'empty string' => [' '];
+        yield 'too short' => ['0190f3a4-7b2c-7def-8123'];
+        yield 'non-hex character' => ['0190f3a4-7b2c-7def-8123-456789abcdez'];
+        yield 'wrong version' => ['0190f3a4-7b2c-4def-8123-456789abcdef'];
+        yield 'wrong variant' => ['0190f3a4-7b2c-7def-c123-456789abcdef'];
+        yield 'no hyphens' => ['0190f3a47b2c7def8123456789abcdef'];
     }
 
     #[Test]

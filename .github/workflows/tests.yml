@@ -1,7 +1,7 @@
 name: Tests
 
-# Workflow réutilisable : tests + analyse statique + style.
-# Appelé par ci.yml (push/PR) et par release.yml (gate avant publication).
+# Reusable workflow: tests + static analysis + style.
+# Called by ci.yml (push/PR) and by release.yml (gate before publishing).
 on:
   workflow_call:
 
